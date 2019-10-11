@@ -14,7 +14,14 @@ jobs:
       - uses: actions/checkout@v1
       - name: Install dependencies
         run: pub get
-      - name: Check format
-        run: dartfmt . -l 120 --fix --set-exit-if-changed -n
+      - name: Checking dartfmt...
+        run: dartfmt -l 120 --fix --set-exit-if-changed -n lib/ test/
+      - name: Running dartanalyzer...
+        run: dartanalyzer .
       - name: Run tests
         run: pub run test
+      - name: Collect Coverage
+        run: ./tools/test_with_coverage.sh
+        shell: bash
+      - name: Report Coverage
+        run: bash <(curl -s https://codecov.io/bash)
