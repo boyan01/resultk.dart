@@ -1,4 +1,4 @@
-import 'package:result/result.dart';
+import 'package:resultk/resultk.dart';
 import 'package:test/test.dart';
 
 void main() {
