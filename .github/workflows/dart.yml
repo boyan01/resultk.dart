@@ -23,5 +23,8 @@ jobs:
       - name: Collect Coverage
         run: ./tools/test_with_coverage.sh
         shell: bash
-      - name: Report Coverage
-        run: bash <(curl -s https://codecov.io/bash)
+      - name: Report CodeCov
+        uses: codecov/codecov-action@v1.0.2
+        with:
+          token: ${{secrets.CODECOV_TOKEN}}
+          flags: unittests
